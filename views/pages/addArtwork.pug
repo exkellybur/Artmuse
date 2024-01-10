@@ -1,0 +1,31 @@
+html 
+    head    
+        title Add artwork page
+        link(rel="stylesheet", href="/styles.css")
+body
+    include ../partials/header 
+    br
+
+    h1 Add Artwork:
+    div(class="card")
+        label(for="artname")
+                | Title: 
+                input(type="text", name="artname", id="add-title")
+        label(for="year")
+                | Year: 
+                input(type="text", name="year", id="add-year")
+        label(for="category")
+                | Category: 
+                input(type="text", name="category", id="add-category")
+        label(for="medium")
+                | Medium: 
+                input(type="text", name="medium", id="add-medium")
+        label(for="description")
+                | Description: 
+                input(type="text", name="description", id="add-description")
+        label(for="poster")
+                | Poster link: 
+                input(type="text", name="poster", id="add-poster")
+        button(type="button", id="add-artwork") Add artwork
+
+    script(src="/addclient.js")

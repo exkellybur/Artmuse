@@ -1,0 +1,20 @@
+
+html 
+    head    
+        title Notifications page
+        link(rel="stylesheet", href="/styles.css")
+body
+    include ../partials/header 
+    br
+
+    h1 Your notifications:
+    div(class="card")
+        if notifications.length > 0
+            each notif in notifications
+                div(class="a-notif")
+                    a(href=`/artist/${notif.user.username}`) #{notif.user.username}:
+                    p #{notif.text}
+        else 
+            p You don't have any notifications
+
+    //script(src="/artistclient.js")

@@ -1,0 +1,20 @@
+html 
+    head    
+        title Signup page
+        link(rel="stylesheet", href="/styles.css")
+body
+    include ../partials/header 
+    br
+
+    div#main 
+        h1 Signup: 
+        div(class="card")
+            label(for="username")
+                | Username: 
+                input(type="text", name="username", id="signup-username")
+            label(for="password")
+                | Password: 
+                input(type="password", name="password", id="signup-password")
+            button(type="button", id="signup-btn") Sign up
+
+    script(src="/signupclient.js")

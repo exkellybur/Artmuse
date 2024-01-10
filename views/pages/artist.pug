@@ -1,0 +1,65 @@
+html 
+    head    
+        title Profile page
+        link(rel="stylesheet", href="/styles.css")
+body
+    include ../partials/header 
+    br
+
+    h1 #{artist.username} profile page
+    if isFollowing == true 
+            button(type="button", id="unfollow-artist", value=`${artist.username}`) Unfollow
+    else
+        button(type="button", id="follow-artist", value=`${artist.username}`) Follow 
+    - if (artist.accountType === "artist")
+        div(class="display-workshops")
+            div(class="card")
+                h2 Workshops
+                if workshops.length > 0 
+                    each workshop in workshops 
+                        div(class="workshop")
+                            p
+                                |Workshop name: 
+                                a(href=`/workshop/:${workshop._id}`) #{workshop.title} 
+                            button(type="button", class="enroll-button", value=`${workshop._id}`) Enroll
+                else
+                    p Artist currently does not have any workshops. 
+    
+    div(class="card")
+        h2 Gallery
+        if artworks.length > 0
+            each artwork in artworks 
+                div(class="display-artworks-user")
+                    a(href=`/artwork/${artwork.title}`)
+                        img(src=`${artwork.poster}` alt=`${artwork.title}`)
+                    p Title: #{artwork.title}
+                    p #{artwork.description}
+        else  
+            p #{artist.username} currently has no artworks to display
+
+    div(class="manage-activity")
+        div(class="card")
+            h2 User's activity:
+            h2 Reviews: 
+            if reviews.length > 0
+            each review in reviews
+                div(class="review-card")
+                    p 
+                        |Review for:
+                        a(href=`/artwork/${review.artwork.title}`) #{review.artwork.title}: 
+                    p #{review.text}
+            else 
+                p No reviews to display.
+            div(class="manage-likes")
+                h2 Liked artworks:
+                if likes.length > 0
+                each like in likes
+                    div(class="art-card")
+                        a(href=`/artwork/${like.title}`)
+                            img(src=`${like.poster}` alt=`${like.title}`)
+                else 
+                    p No liked artworks to display for this user.
+    
+
+
+    script(src="/artistclient.js")

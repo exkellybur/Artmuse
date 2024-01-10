@@ -1,0 +1,19 @@
+
+html 
+    head    
+        title Following page
+        link(rel="stylesheet", href="/styles.css")
+body
+    include ../partials/header 
+    br
+
+    h1 Users you follow:
+    div(class="card")
+        if following.length > 0
+            each user in following
+                div(class="a-follow")
+                    a(href=`/artist/${user.username}`) > #{user.username}
+        else 
+            p You don't follow anyone
+
+    //script(src="/artistclient.js")

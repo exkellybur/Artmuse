@@ -1,0 +1,43 @@
+html 
+    head    
+        title Artwork Page
+        link(rel="stylesheet", href="/styles.css")
+body
+    include ../partials/header 
+    br
+
+    div(class="card")
+        h1 #{artwork.title}
+        div(class="display-artwork")
+            img(src=`${artwork.poster}` alt=`${artwork.title}`)
+            div(class="artwork-likes")
+                p Number of likes: #{artwork.likes} 
+                button(type="button", id="add-like", value=`${artwork.title}`) Like 
+            p Title: #{artwork.title}
+            p 
+                | Artist:
+                a(href=`/artist/${artwork.artist.username}`) #{artwork.artist.username}
+            p Year: #{artwork.year}
+            p 
+                |Category: 
+                a(href=`/artwork/category/:${artwork.category}`) #{artwork.category}
+            p
+                |Medium: 
+                a(href=`/artwork/medium/:${artwork.medium}`) #{artwork.medium} 
+            p Description: #{artwork.description} 
+    div(class="card")
+        div(class="display-reviews")
+            h2 Reviews 
+            button(type="button", id="addReview-btn", value=`${artwork.title}`) Add a review
+            input(type="text", id="add-review")
+            if reviews.length > 0
+                each review in reviews 
+                    div(class="review-card")
+                        p 
+                            |Review by: 
+                            a(href=`/artist/${review.user.username}`) #{review.user.username}
+                        p #{review.text} 
+            else
+                p(style="font-weight: bold;") This artwork currently has no reviews...
+
+    script(src="/artworkclient.js")

@@ -1,0 +1,50 @@
+html 
+    head    
+        title Dashboard
+        link(rel="stylesheet", href="/styles.css")
+body
+    include ../partials/header 
+    //- //br
+
+    h1 #{user.username}'s Dashboard 
+    div(class="card")
+        button(type="button", id="signout") Signout
+        div(class="dashboard-card")
+            a(href=`/artist/${user.username}`) View your profile
+            p You're currently: #{user.accountType}
+            button(type="button", id="change-type") Change account type
+            br
+            if user.accountType === "artist"
+                a(href='/addArtwork') Add Artwork
+                br
+                a(href="/addWorkshop") Add Workshop
+
+
+    div(class="manage-activity")
+        h2 Manage Activity
+        div(class="card")
+            h2 Your Reviews:
+            if reviews.length > 0
+                each review in reviews
+                    div(class="review-card")
+                        p 
+                            |Review for:
+                            a(href=`/artwork/${review.artwork.title}`) #{review.artwork.title}: 
+                        p #{review.text}
+                        button(type="button", class="remove-review", value=`${review.artwork.title}`) Remove review
+            else 
+                p You have not reviewed anything.
+        div(class="manage-likes")
+            div(class="card")
+                h2 Liked artworks:
+                if likes.length > 0
+                    each artwork in likes
+                        div(class="art-card")
+                            a(href=`/artwork/${artwork.title}`)
+                                img(src=`${artwork.poster}` alt=`${artwork.title}`)
+                        button(type="button", class="remove-like", value=`${artwork.title}`) Remove like
+                else 
+                    p You have not liked anything yet.
+
+    
+    script(src="/dashclient.js")

@@ -1,0 +1,24 @@
+html 
+    head    
+        title Gallery Home
+        link(rel="stylesheet", href="/styles.css")
+body
+    include ../partials/header 
+    br
+
+    h1 Gallery Home Page 
+    if !loggedin
+        button(type="button", id="go-login", onclick="javascript:window.location.href='/login'") Login
+    div(class ="whole-gallery")
+        if artworks.length > 0
+            each artwork in artworks 
+                div(class="art-gallery")
+                    a(href=`/artwork/${artwork.title}`)
+                        img(src=`${artwork.poster}` alt=`${artwork.title}`)
+                p
+                    |Artist: 
+                    a(href=`/artist/${artwork.artist.username}`) #{artwork.artist.username}
+                p Title: #{artwork.title}
+                p #{artwork.description}
+
+    //script(src="/client.js")

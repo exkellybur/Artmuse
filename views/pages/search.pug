@@ -1,0 +1,25 @@
+html 
+    head    
+        title Search page
+        link(rel="stylesheet", href="/styles.css")
+body
+    include ../partials/header 
+    br
+    div(class="search")
+        h1 Search:
+        label(for="search-artist")
+                | Artist: 
+                input(type="text", name="search-artist", id="search-artist")
+        label(for="search-title")
+                | Title: 
+                input(type="text", name="search-title", id="search-title")
+        label(for="search-category")
+                | Category: 
+                input(type="text", name="search-category", id="search-category")
+        button(type="button", id="search-box") Search
+    br
+    div(class="results")
+    div(class="pagination")
+        
+
+    script(src="/searchclient.js")

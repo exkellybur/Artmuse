@@ -1,0 +1,23 @@
+html 
+    head    
+        title Login page
+        link(rel="stylesheet", href="/styles.css")
+body
+    include ../partials/header 
+    br
+
+    div#main 
+        p=message
+        h1 Login: 
+        div(class="card")
+            label(for="username")
+                | Username: 
+                input(type="text", name="username", id="login-username")
+            label(for="password")
+                | Password: 
+                input(type="password", name="password", id="login-password")
+            button(type="button", id="login-btn") Login
+            p 
+                |Don't have an account?
+                a(href="/signup") Sign up! 
+    script(src="/loginclient.js")

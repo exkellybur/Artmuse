@@ -1,0 +1,22 @@
+html 
+    head    
+        title Search result page
+        link(rel="stylesheet", href="/styles.css")
+body
+    include ../partials/header 
+    br
+
+    h1 Search results:
+    div(class="results")
+        div(class ="artist-gallery")
+            if artworks.length > 0
+                each artwork in artworks 
+                    div(class="display-artwork")
+                        a(href=`/artwork/${artwork.title}`)
+                            img(src=`${artwork.poster}` alt=`${artwork.title}`)
+                        p Title: #{artwork.title}
+                        p #{artwork.description}
+            else 
+                p No artworks match this search 
+
+    //script(src="/artistclient.js")

@@ -1,0 +1,20 @@
+html 
+    head    
+        title Add workshop page
+        link(rel="stylesheet", href="/styles.css")
+body
+    include ../partials/header 
+    br
+
+    h1 Add Workshop:
+    div(class="card")
+        label(for="workshopname")
+                | Title: 
+                input(type="text", name="workshopname", id="add-worktitle")
+        label(for="year")
+                | Description: 
+                input(type="text", name="year", id="add-workdescr")
+        button(type="button", id="add-workshop") Add Workshop
+        
+
+    script(src="/addworkshop.js")

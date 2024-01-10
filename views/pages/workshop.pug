@@ -1,0 +1,23 @@
+html 
+    head    
+        title Workshop details
+        link(rel="stylesheet", href="/styles.css")
+body
+    include ../partials/header 
+    br
+
+    div(class="card")
+        h1 #{workshop.title} details
+        div(class ="workshop-card")
+            p 
+                |Artist running the workshop: 
+                a(href=`/artist/${workshop.artist.username}`) #{workshop.artist.username}
+            if workshop.enrolled.length > 0
+                h2 Enrolled users: 
+                each user in workshop.enrolled 
+                    a(href=`/artist/${user.username}`) #{user.username} 
+                    br
+            else 
+                p Nobody is enrolled in this workshop yet. 
+
+    //script(src="/client.js")
